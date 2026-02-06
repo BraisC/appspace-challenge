@@ -1,19 +1,10 @@
 import { useState, useMemo } from 'react';
 import { useGetCharacters } from '@/hooks/useCharacters';
-import {
-  Container,
-  Title,
-  Grid,
-  Loading,
-  Error,
-  SortControls,
-  SortLabel,
-  SortSelect,
-} from './CharacterList.styles';
+import { Container, Title, Grid, Loading, Error } from './CharacterList.styles';
 import { CharacterCard } from './components/CharacterCard';
 import { Pagination } from './components/Pagination';
-
-type SortOption = 'none' | 'name' | 'species';
+import { SortControls } from './components/SortControls';
+import type { SortOption } from './components/SortControls';
 
 export const CharacterList = () => {
   const [page, setPage] = useState(1);
@@ -34,31 +25,22 @@ export const CharacterList = () => {
     });
   }, [validData, sortBy]);
 
-  if (isLoading) {
-    return <Loading>Loading characters...</Loading>;
-  }
-
-  if (error) {
-    return <Error>Error loading characters</Error>;
-  }
-
   return (
     <Container>
       <Title>Rick and Morty Characters</Title>
-      <SortControls>
-        <SortLabel>Sort by:</SortLabel>
-        <SortSelect value={sortBy} onChange={(e) => setSortBy(e.target.value as SortOption)}>
-          <option value="none">Default</option>
-          <option value="name">Name</option>
-          <option value="species">Species</option>
-        </SortSelect>
-      </SortControls>
-      <Grid>
-        {sortedData?.map((character) => (
-          <CharacterCard key={character?.id} character={character} />
-        ))}
-      </Grid>
-      <Pagination info={info} currentPage={page} setPage={setPage} />
+      <SortControls value={sortBy} onChange={setSortBy} />
+      {isLoading ? (
+        <Loading>Loading...</Loading>
+      ) : error ? (
+        <Error>Error loading</Error>
+      ) : (
+        <Grid>
+          {sortedData?.map((character) => (
+            <CharacterCard key={character?.id} character={character} />
+          ))}
+        </Grid>
+      )}
+      <Pagination info={info} currentPage={page} onChange={setPage} />
     </Container>
   );
 };

@@ -45,30 +45,3 @@ export const Error = styled.div`
   padding: 2rem;
   color: #f44336;
 `;
-
-export const SortControls = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
-`;
-
-export const SortLabel = styled.span`
-  color: #666;
-  font-size: 0.9rem;
-`;
-
-export const SortSelect = styled.select`
-  padding: 0.5rem 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-family: inherit;
-  font-size: 0.9rem;
-  cursor: pointer;
-  background: #fff;
-
-  &:focus {
-    outline: none;
-    border-color: #333;
-  }
-`;
