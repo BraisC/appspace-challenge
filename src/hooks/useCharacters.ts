@@ -12,16 +12,19 @@ const GetCharactersDocument = /* GraphQL */ `
     characters(page: $page) {
       info {
         count
-        pages
-        next
-        prev
       }
       results {
         id
         name
-        status
-        species
         image
+        species
+        location {
+          name
+        }
+        episode {
+          episode
+          name
+        }
       }
     }
   }
