@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { graphqlClient } from '../lib/graphql-client';
+import { graphqlClient } from '@/lib/graphql-client';
 import type {
   GetCharactersQuery,
   GetCharactersQueryVariables,
