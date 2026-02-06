@@ -11,7 +11,9 @@ const GetCharactersDocument = /* GraphQL */ `
   query GetCharacters($page: Int) {
     characters(page: $page) {
       info {
-        count
+        pages
+        next
+        prev
       }
       results {
         id

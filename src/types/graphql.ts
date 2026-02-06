@@ -205,7 +205,7 @@ export type GetCharactersQueryVariables = Exact<{
 }>;
 
 
-export type GetCharactersQuery = { __typename?: 'Query', characters?: { __typename?: 'Characters', info?: { __typename?: 'Info', count?: number | null } | null, results?: Array<{ __typename?: 'Character', id?: string | null, name?: string | null, image?: string | null, species?: string | null, location?: { __typename?: 'Location', name?: string | null } | null, episode: Array<{ __typename?: 'Episode', episode?: string | null, name?: string | null } | null> } | null> | null } | null };
+export type GetCharactersQuery = { __typename?: 'Query', characters?: { __typename?: 'Characters', info?: { __typename?: 'Info', pages?: number | null, next?: number | null, prev?: number | null } | null, results?: Array<{ __typename?: 'Character', id?: string | null, name?: string | null, image?: string | null, species?: string | null, location?: { __typename?: 'Location', name?: string | null } | null, episode: Array<{ __typename?: 'Episode', episode?: string | null, name?: string | null } | null> } | null> | null } | null };
 
 export type GetCharacterQueryVariables = Exact<{
   id: Scalars['ID']['input'];
