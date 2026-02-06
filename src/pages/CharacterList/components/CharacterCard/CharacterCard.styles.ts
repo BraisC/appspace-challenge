@@ -9,7 +9,7 @@ export const Card = styled.div`
   transition:
     transform 0.2s,
     box-shadow 0.2s;
-  width: 220px;
+  width: 16rem;
 
   &:hover {
     transform: translateY(-4px);
@@ -17,11 +17,11 @@ export const Card = styled.div`
   }
 
   @media (max-width: 900px) {
-    width: 190px;
+    width: 12rem;
   }
 
   @media (max-width: 600px) {
-    width: 140px;
+    width: 9rem;
   }
 `;
 
