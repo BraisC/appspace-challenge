@@ -7,7 +7,7 @@ import type {
   GetCharacterQueryVariables,
 } from '../types/graphql';
 
-const GetCharactersDocument = `
+const GetCharactersDocument = /* GraphQL */ `
   query GetCharacters($page: Int) {
     characters(page: $page) {
       info {
@@ -27,7 +27,7 @@ const GetCharactersDocument = `
   }
 `;
 
-const GetCharacterDocument = `
+const GetCharacterDocument = /* GraphQL */ `
   query GetCharacter($id: ID!) {
     character(id: $id) {
       id
