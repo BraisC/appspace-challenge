@@ -12,11 +12,17 @@ const config: CodegenConfig = {
       preset: 'import-types',
       presetConfig: {
         typesPath: '../types/graphql-types',
+        useTypeImports: true,
       },
       config: {
         reactQueryVersion: 5,
         exposeQueryKeys: true,
         exposeFetcher: true,
+        legacyMode: false,
+        fetcher: {
+          func: '../lib/graphql-client#fetcher',
+          isReactHook: false,
+        },
       },
     },
   },
