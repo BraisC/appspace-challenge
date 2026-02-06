@@ -8,8 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "codegen": "graphql-codegen",
-    "codegen:watch": "graphql-codegen --watch"
+    "codegen": "graphql-codegen"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.90.20",
@@ -21,6 +20,7 @@
   "devDependencies": {
     "@eslint/js": "^9.39.1",
     "@graphql-codegen/cli": "^6.1.1",
+    "@graphql-codegen/import-types-preset": "^3.0.1",
     "@graphql-codegen/typescript": "^5.0.7",
     "@graphql-codegen/typescript-operations": "^5.0.7",
     "@graphql-codegen/typescript-react-query": "^6.1.1",
