@@ -38,8 +38,8 @@ const GetCharacterDocument = /* GraphQL */ `
       id
       name
       status
+      image
       species
-      type
       gender
       origin {
         name
@@ -47,11 +47,10 @@ const GetCharacterDocument = /* GraphQL */ `
       location {
         name
       }
-      image
       episode {
         id
+        episode
         name
-        air_date
       }
     }
   }
