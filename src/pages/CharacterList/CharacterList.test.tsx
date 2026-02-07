@@ -10,6 +10,7 @@ const mockCharacters = [
   { id: '1', name: 'Rick Sanchez', image: 'rick.png', species: 'Human' },
   { id: '2', name: 'Morty Smith', image: 'morty.png', species: 'Human' },
   { id: '3', name: 'Birdperson', image: 'bird.png', species: 'Alien' },
+  { id: '4', name: 'Albert Einstein', image: 'albert.png', species: 'Human' },
 ];
 
 const server = setupServer(
@@ -88,9 +89,10 @@ describe('CharacterList', () => {
     fireEvent.change(select, { target: { value: 'name' } });
 
     const names = screen.getAllByRole('heading', { level: 3 });
-    expect(names[0]).toHaveTextContent('Birdperson');
-    expect(names[1]).toHaveTextContent('Morty Smith');
-    expect(names[2]).toHaveTextContent('Rick Sanchez');
+    expect(names[0]).toHaveTextContent('Albert Einstein');
+    expect(names[1]).toHaveTextContent('Birdperson');
+    expect(names[2]).toHaveTextContent('Morty Smith');
+    expect(names[3]).toHaveTextContent('Rick Sanchez');
   });
 
   it('sorts characters by species', async () => {
@@ -103,10 +105,12 @@ describe('CharacterList', () => {
     const select = screen.getByRole('combobox');
     fireEvent.change(select, { target: { value: 'species' } });
 
+    // It is expected to show them ordered by species and by ID if same species
     const names = screen.getAllByRole('heading', { level: 3 });
     expect(names[0]).toHaveTextContent('Birdperson');
     expect(names[1]).toHaveTextContent('Rick Sanchez');
     expect(names[2]).toHaveTextContent('Morty Smith');
+    expect(names[3]).toHaveTextContent('Albert Einstein');
   });
 
   it('filters by name', async () => {
