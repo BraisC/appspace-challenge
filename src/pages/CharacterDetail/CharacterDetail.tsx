@@ -1,30 +1,66 @@
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useGetCharacter } from '@/hooks/useCharacters';
+import {
+  BackLink,
+  Card,
+  Header,
+  Image,
+  Info,
+  Name,
+  Status,
+  Detail,
+  EpisodeSection,
+  EpisodeTitle,
+  Loading,
+  Error,
+} from './CharacterDetail.styles';
 
 export const CharacterDetail = () => {
   const { id } = useParams<{ id: string }>();
   const { data, isLoading, error } = useGetCharacter({ id: id! });
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error loading character</div>;
+  if (isLoading) return <Loading>Loading...</Loading>;
+  if (error) return <Error>Error loading character</Error>;
 
   const character = data?.character;
 
   return (
-    <div>
-      <Link to="/">Go back</Link>
-      <h1>{character?.name}</h1>
-      <img src={character?.image ?? ''} alt={character?.name ?? ''} />
-      <p>{character?.status}</p>
-      <p>{character?.species}</p>
-      <p>{character?.gender}</p>
-      <p>{character?.origin?.name}</p>
-      <p>{character?.location?.name}</p>
-      <ul>
-        {character?.episode.map((ep) => (
-          <li key={ep?.id}>{ep?.episode + ' - ' + ep?.name}</li>
-        ))}
-      </ul>
-    </div>
+    <>
+      <BackLink to="/">← Go back</BackLink>
+      <Card>
+        <Header>
+          <Image
+            src={character?.image ?? '/character-placeholder.jpg'}
+            alt={character?.name ?? ''}
+          />
+          <Info>
+            <Name>{character?.name}</Name>
+            <Status $status={character?.status ?? undefined}>{character?.status}</Status>
+            <Detail>
+              <strong>Species:</strong> {character?.species}
+            </Detail>
+            <Detail>
+              <strong>Gender:</strong> {character?.gender}
+            </Detail>
+            <Detail>
+              <strong>Origin:</strong> {character?.origin?.name}
+            </Detail>
+            <Detail>
+              <strong>Location:</strong> {character?.location?.name}
+            </Detail>
+          </Info>
+        </Header>
+        <EpisodeSection>
+          <EpisodeTitle>Episodes</EpisodeTitle>
+          <ul>
+            {character?.episode.map((ep) => (
+              <li key={ep?.id}>
+                {ep?.episode} - {ep?.name}
+              </li>
+            ))}
+          </ul>
+        </EpisodeSection>
+      </Card>
+    </>
   );
 };
