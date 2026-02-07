@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
 import { useGetCharacters } from '@/hooks/useCharacters';
+import { useDebounce } from '@/hooks/useDebounce';
 import { Controls, Grid } from './CharacterList.styles';
 import { CharacterCard } from './components/CharacterCard';
 import { Pagination } from './components/Pagination';
@@ -13,15 +14,16 @@ export const CharacterList = () => {
   const [page, setPage] = useState(1);
   const [sortBy, setSortBy] = useState<SortOption>('none');
   const [filters, setFilters] = useState<FilterValues>({ name: '', species: '' });
+  const debouncedFilters = useDebounce(filters, 400);
 
   const { data, isLoading, error } = useGetCharacters({
     page,
     filter: {
-      name: filters.name || undefined,
-      species: filters.species || undefined,
+      name: debouncedFilters.name || undefined,
+      species: debouncedFilters.species || undefined,
     },
   });
-
+  console.log('Render');
   const info = data?.characters?.info;
   const validData = data?.characters?.results?.filter((character) => character !== null);
 
