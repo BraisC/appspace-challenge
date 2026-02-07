@@ -16,8 +16,8 @@ const mockCharacter = {
   origin: { name: 'Earth (C-137)' },
   location: { name: 'Citadel of Ricks' },
   episode: [
-    { id: '1', name: 'Pilot' },
-    { id: '2', name: 'Lawnmower Dog' },
+    { id: '1', episode: 'S01E01', name: 'Pilot' },
+    { id: '2', episode: 'S01E02', name: 'Lawnmower Dog' },
   ],
 };
 
@@ -136,8 +136,8 @@ describe('CharacterDetail', () => {
     RenderWithQueryClientAndRouter('1');
 
     await waitFor(() => {
-      expect(screen.getByText('Pilot')).toBeInTheDocument();
-      expect(screen.getByText('Lawnmower Dog')).toBeInTheDocument();
+      expect(screen.getByText('S01E01 - Pilot')).toBeInTheDocument();
+      expect(screen.getByText('S01E02 - Lawnmower Dog')).toBeInTheDocument();
     });
   });
 
