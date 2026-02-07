@@ -11,9 +11,8 @@ import {
   Detail,
   EpisodeSection,
   EpisodeTitle,
-  Loading,
-  Error,
 } from './CharacterDetail.styles';
+import { Error, Loading } from '@/styles/shared.styles';
 
 export const CharacterDetail = () => {
   const { id } = useParams<{ id: string }>();

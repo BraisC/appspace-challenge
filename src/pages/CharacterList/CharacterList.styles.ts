@@ -26,15 +26,3 @@ export const Grid = styled.div`
     padding: 0 1rem;
   }
 `;
-
-export const Loading = styled.div`
-  text-align: center;
-  padding: 2rem;
-  color: #666;
-`;
-
-export const Error = styled.div`
-  text-align: center;
-  padding: 2rem;
-  color: #f44336;
-`;

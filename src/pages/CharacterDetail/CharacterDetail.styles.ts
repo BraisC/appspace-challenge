@@ -87,15 +87,3 @@ export const EpisodeTitle = styled.h2`
   font-size: 1.2rem;
   color: #333;
 `;
-
-export const Loading = styled.div`
-  text-align: center;
-  padding: 4rem;
-  color: #666;
-`;
-
-export const Error = styled.div`
-  text-align: center;
-  padding: 4rem;
-  color: #f44336;
-`;

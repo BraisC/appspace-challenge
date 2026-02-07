@@ -1,12 +1,13 @@
 import { useState, useMemo } from 'react';
 import { useGetCharacters } from '@/hooks/useCharacters';
-import { Controls, Grid, Loading, Error } from './CharacterList.styles';
+import { Controls, Grid } from './CharacterList.styles';
 import { CharacterCard } from './components/CharacterCard';
 import { Pagination } from './components/Pagination';
 import { SortControls } from './components/SortControls';
 import type { SortOption } from './components/SortControls';
 import { FilterControls } from './components/FilterControls';
 import type { FilterValues } from './components/FilterControls';
+import { Error, Loading } from '@/styles/shared.styles';
 
 export const CharacterList = () => {
   const [page, setPage] = useState(1);
