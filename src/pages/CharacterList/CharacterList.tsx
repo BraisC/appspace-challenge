@@ -24,7 +24,8 @@ export const CharacterList = () => {
   const info = data?.characters?.info;
   const validData = data?.characters?.results?.filter((character) => character !== null);
 
-  //The problem with this API is that, as it can't get sorting as a query parameter, I can only sort on a page level, not globally :/
+  // The problem with this API is that, as it can't get sorting as a query parameter, I can only sort on a page level, not globally :/
+  // Also when order by species, in case of the same species they will be ordered by ID
   const sortedData = useMemo(() => {
     if (!validData || sortBy === 'none') return validData;
 
