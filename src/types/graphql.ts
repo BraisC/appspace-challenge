@@ -15,10 +15,9 @@ export type Scalars = {
   Upload: { input: any; output: any; }
 };
 
-export enum CacheControlScope {
-  Private = 'PRIVATE',
-  Public = 'PUBLIC'
-}
+export type CacheControlScope =
+  | 'PRIVATE'
+  | 'PUBLIC';
 
 export type Character = {
   __typename?: 'Character';

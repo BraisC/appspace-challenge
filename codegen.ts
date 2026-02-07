@@ -6,6 +6,9 @@ const config: CodegenConfig = {
   generates: {
     './src/types/graphql.ts': {
       plugins: ['typescript', 'typescript-operations'],
+      config: {
+        enumsAsTypes: true,
+      },
     },
   },
 };
