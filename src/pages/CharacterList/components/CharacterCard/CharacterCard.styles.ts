@@ -68,7 +68,7 @@ export const Species = styled.p`
   font-size: 0.9rem;
   color: #666;
 
-  @media (max-width: 480px) {
+  @media (max-width: 600px) {
     font-size: 0.8rem;
   }
 `;

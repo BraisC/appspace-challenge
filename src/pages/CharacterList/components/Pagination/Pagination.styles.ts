@@ -25,4 +25,8 @@ export const PageButton = styled.button<{ disabled?: boolean }>`
 
 export const PageInfo = styled.span`
   color: #666;
+
+  @media (max-width: 600px) {
+    font-size: 0.7rem;
+  }
 `;
