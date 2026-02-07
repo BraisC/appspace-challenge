@@ -9,8 +9,11 @@ export const Container = styled.div`
   font-family: 'Courier New', Courier, monospace;
 `;
 
-export const Title = styled.h1`
-  font-size: 2rem;
+export const Logo = styled.img`
+  height: 8rem;
   margin-bottom: 2rem;
-  color: #333;
+
+  @media (max-width: 600px) {
+    height: 5rem;
+  }
 `;
