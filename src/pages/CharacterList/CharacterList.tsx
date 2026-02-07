@@ -8,7 +8,7 @@ import { SortControls } from './components/SortControls';
 import type { SortOption } from './components/SortControls';
 import { FilterControls } from './components/FilterControls';
 import type { FilterValues } from './components/FilterControls';
-import { Error, Loading } from '@/styles/shared.styles';
+import { Empty, Error, Loading } from '@/styles/shared.styles';
 
 export const CharacterList = () => {
   const [page, setPage] = useState(1);
@@ -55,6 +55,8 @@ export const CharacterList = () => {
         <Loading>Loading...</Loading>
       ) : error ? (
         <Error>Error loading</Error>
+      ) : !sortedData?.length ? (
+        <Empty>No characters found</Empty>
       ) : (
         <Grid>
           {sortedData?.map((character) => (
