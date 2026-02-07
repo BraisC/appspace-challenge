@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
 import { useGetCharacters } from '@/hooks/useCharacters';
-import { Container, Title, Controls, Grid, Loading, Error } from './CharacterList.styles';
+import { Controls, Grid, Loading, Error } from './CharacterList.styles';
 import { CharacterCard } from './components/CharacterCard';
 import { Pagination } from './components/Pagination';
 import { SortControls } from './components/SortControls';
@@ -37,8 +37,7 @@ export const CharacterList = () => {
   }, [validData, sortBy]);
 
   return (
-    <Container>
-      <Title>Rick and Morty Characters</Title>
+    <>
       <Controls>
         <SortControls value={sortBy} onChange={setSortBy} />
         <FilterControls
@@ -61,6 +60,6 @@ export const CharacterList = () => {
         </Grid>
       )}
       <Pagination info={info} currentPage={page} onChange={setPage} />
-    </Container>
+    </>
   );
 };
