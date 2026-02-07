@@ -15,6 +15,10 @@ const mockCharacter = {
   gender: 'Male',
   origin: { name: 'Earth (C-137)' },
   location: { name: 'Citadel of Ricks' },
+  episode: [
+    { id: '1', name: 'Pilot' },
+    { id: '2', name: 'Lawnmower Dog' },
+  ],
 };
 
 const server = setupServer(
@@ -125,6 +129,24 @@ describe('CharacterDetail', () => {
 
     await waitFor(() => {
       expect(screen.getByText('Citadel of Ricks')).toBeInTheDocument();
+    });
+  });
+
+  it('displays episode list', async () => {
+    RenderWithQueryClientAndRouter('1');
+
+    await waitFor(() => {
+      expect(screen.getByText('Pilot')).toBeInTheDocument();
+      expect(screen.getByText('Lawnmower Dog')).toBeInTheDocument();
+    });
+  });
+
+  it('has a link to return to home', async () => {
+    RenderWithQueryClientAndRouter('1');
+
+    await waitFor(() => {
+      const link = screen.getByRole('link', { name: /go back/i });
+      expect(link).toHaveAttribute('href', '/');
     });
   });
 });
