@@ -23,7 +23,7 @@ export const CharacterList = () => {
       species: debouncedFilters.species || undefined,
     },
   });
-  console.log('Render');
+
   const info = data?.characters?.info;
   const validData = data?.characters?.results?.filter((character) => character !== null);
 
