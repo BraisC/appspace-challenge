@@ -39,6 +39,20 @@ export const CharacterList = () => {
     });
   }, [validData, sortBy]);
 
+  const renderContent = () => {
+    if (isLoading) return <Loading>Loading...</Loading>;
+    if (error) return <Error>Error loading</Error>;
+    if (!sortedData?.length) return <Empty>No characters found</Empty>;
+
+    return (
+      <Grid>
+        {sortedData.map((character) => (
+          <CharacterCard key={character?.id} character={character} />
+        ))}
+      </Grid>
+    );
+  };
+
   return (
     <>
       <Controls>
@@ -51,19 +65,7 @@ export const CharacterList = () => {
           }}
         />
       </Controls>
-      {isLoading ? (
-        <Loading>Loading...</Loading>
-      ) : error ? (
-        <Error>Error loading</Error>
-      ) : !sortedData?.length ? (
-        <Empty>No characters found</Empty>
-      ) : (
-        <Grid>
-          {sortedData?.map((character) => (
-            <CharacterCard key={character?.id} character={character} />
-          ))}
-        </Grid>
-      )}
+      {renderContent()}
       <Pagination info={info} currentPage={page} onChange={setPage} />
     </>
   );
