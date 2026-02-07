@@ -202,6 +202,7 @@ export type QueryLocationsByIdsArgs = {
 
 export type GetCharactersQueryVariables = Exact<{
   page?: InputMaybe<Scalars['Int']['input']>;
+  filter?: InputMaybe<FilterCharacter>;
 }>;
 
 

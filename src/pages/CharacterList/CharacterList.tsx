@@ -1,15 +1,25 @@
 import { useState, useMemo } from 'react';
 import { useGetCharacters } from '@/hooks/useCharacters';
-import { Container, Title, Grid, Loading, Error } from './CharacterList.styles';
+import { Container, Title, Controls, Grid, Loading, Error } from './CharacterList.styles';
 import { CharacterCard } from './components/CharacterCard';
 import { Pagination } from './components/Pagination';
 import { SortControls } from './components/SortControls';
 import type { SortOption } from './components/SortControls';
+import { FilterControls } from './components/FilterControls';
+import type { FilterValues } from './components/FilterControls';
 
 export const CharacterList = () => {
   const [page, setPage] = useState(1);
   const [sortBy, setSortBy] = useState<SortOption>('none');
-  const { data, isLoading, error } = useGetCharacters({ page });
+  const [filters, setFilters] = useState<FilterValues>({ name: '', species: '' });
+
+  const { data, isLoading, error } = useGetCharacters({
+    page,
+    filter: {
+      name: filters.name || undefined,
+      species: filters.species || undefined,
+    },
+  });
 
   const info = data?.characters?.info;
   const validData = data?.characters?.results?.filter((character) => character !== null);
@@ -28,7 +38,16 @@ export const CharacterList = () => {
   return (
     <Container>
       <Title>Rick and Morty Characters</Title>
-      <SortControls value={sortBy} onChange={setSortBy} />
+      <Controls>
+        <SortControls value={sortBy} onChange={setSortBy} />
+        <FilterControls
+          values={filters}
+          onChange={(newFilters) => {
+            setFilters(newFilters);
+            setPage(1);
+          }}
+        />
+      </Controls>
       {isLoading ? (
         <Loading>Loading...</Loading>
       ) : error ? (

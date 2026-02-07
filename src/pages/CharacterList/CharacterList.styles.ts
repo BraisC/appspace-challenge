@@ -15,6 +15,14 @@ export const Title = styled.h1`
   color: #333;
 `;
 
+export const Controls = styled.div`
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
+
 export const Grid = styled.div`
   width: 100%;
   display: grid;

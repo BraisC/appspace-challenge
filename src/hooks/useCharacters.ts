@@ -8,8 +8,8 @@ import type {
 } from '../types/graphql';
 
 const GetCharactersDocument = /* GraphQL */ `
-  query GetCharacters($page: Int) {
-    characters(page: $page) {
+  query GetCharacters($page: Int, $filter: FilterCharacter) {
+    characters(page: $page, filter: $filter) {
       info {
         pages
         next
