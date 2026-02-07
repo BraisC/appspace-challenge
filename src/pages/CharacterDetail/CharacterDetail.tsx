@@ -14,7 +14,7 @@ import {
   EpisodeList,
   EpisodeItem,
 } from './CharacterDetail.styles';
-import { Error, Loading } from '@/styles/shared.styles';
+import { Empty, Error, Loading } from '@/styles/shared.styles';
 
 export const CharacterDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -25,43 +25,48 @@ export const CharacterDetail = () => {
 
   const character = data?.character;
 
+  // For this page I didn't create a separate Card component because it is the only main component being rendered here
   return (
     <>
       <BackLink to="/">← Go back</BackLink>
-      <Card>
-        <Header>
-          <Image
-            src={character?.image ?? '/character-placeholder.jpg'}
-            alt={character?.name ?? ''}
-          />
-          <Info>
-            <Name>{character?.name}</Name>
-            <Status $status={character?.status ?? undefined}>{character?.status}</Status>
-            <Detail>
-              <strong>Species:</strong> {character?.species}
-            </Detail>
-            <Detail>
-              <strong>Gender:</strong> {character?.gender}
-            </Detail>
-            <Detail>
-              <strong>Origin:</strong> {character?.origin?.name}
-            </Detail>
-            <Detail>
-              <strong>Location:</strong> {character?.location?.name}
-            </Detail>
-          </Info>
-        </Header>
-        <EpisodeSection>
-          <EpisodeTitle>Episodes</EpisodeTitle>
-          <EpisodeList>
-            {character?.episode.map((ep) => (
-              <EpisodeItem key={ep?.id}>
-                {ep?.episode} - {ep?.name}
-              </EpisodeItem>
-            ))}
-          </EpisodeList>
-        </EpisodeSection>
-      </Card>
+      {character ? (
+        <Card>
+          <Header>
+            <Image
+              src={character?.image ?? '/character-placeholder.jpg'}
+              alt={character?.name ?? ''}
+            />
+            <Info>
+              <Name>{character?.name}</Name>
+              <Status $status={character?.status ?? undefined}>{character?.status}</Status>
+              <Detail>
+                <strong>Species:</strong> {character?.species}
+              </Detail>
+              <Detail>
+                <strong>Gender:</strong> {character?.gender}
+              </Detail>
+              <Detail>
+                <strong>Origin:</strong> {character?.origin?.name}
+              </Detail>
+              <Detail>
+                <strong>Location:</strong> {character?.location?.name}
+              </Detail>
+            </Info>
+          </Header>
+          <EpisodeSection>
+            <EpisodeTitle>Episodes</EpisodeTitle>
+            <EpisodeList>
+              {character?.episode.map((ep) => (
+                <EpisodeItem key={ep?.id}>
+                  {ep?.episode} - {ep?.name}
+                </EpisodeItem>
+              ))}
+            </EpisodeList>
+          </EpisodeSection>
+        </Card>
+      ) : (
+        <Empty>Character not found</Empty>
+      )}
     </>
   );
 };
