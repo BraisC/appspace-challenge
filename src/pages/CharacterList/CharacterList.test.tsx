@@ -1,6 +1,7 @@
 import { render, screen, cleanup, fireEvent, waitFor } from '@testing-library/react';
 import { describe, it, expect, afterEach, afterAll, beforeAll } from 'vitest';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { MemoryRouter } from 'react-router-dom';
 import { graphql, HttpResponse } from 'msw';
 import { setupServer } from 'msw/node';
 import { CharacterList } from './CharacterList';
@@ -31,7 +32,7 @@ afterEach(() => {
 });
 afterAll(() => server.close());
 
-const renderWithQueryClient = (ui: React.ReactElement) => {
+const renderWithQueryClientAndRouter = (ui: React.ReactElement) => {
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
@@ -39,12 +40,16 @@ const renderWithQueryClient = (ui: React.ReactElement) => {
       },
     },
   });
-  return render(<QueryClientProvider client={queryClient}>{ui}</QueryClientProvider>);
+  return render(
+    <QueryClientProvider client={queryClient}>
+      <MemoryRouter>{ui}</MemoryRouter>
+    </QueryClientProvider>
+  );
 };
 
 describe('CharacterList', () => {
   it('shows loading state then renders characters', async () => {
-    renderWithQueryClient(<CharacterList />);
+    renderWithQueryClientAndRouter(<CharacterList />);
 
     expect(screen.getByText('Loading...')).toBeInTheDocument();
 
@@ -65,7 +70,7 @@ describe('CharacterList', () => {
       })
     );
 
-    renderWithQueryClient(<CharacterList />);
+    renderWithQueryClientAndRouter(<CharacterList />);
 
     await waitFor(() => {
       expect(screen.getByText('Error loading')).toBeInTheDocument();
@@ -73,7 +78,7 @@ describe('CharacterList', () => {
   });
 
   it('sorts characters by name', async () => {
-    renderWithQueryClient(<CharacterList />);
+    renderWithQueryClientAndRouter(<CharacterList />);
 
     await waitFor(() => {
       expect(screen.getByText('Rick Sanchez')).toBeInTheDocument();
@@ -89,7 +94,7 @@ describe('CharacterList', () => {
   });
 
   it('sorts characters by species', async () => {
-    renderWithQueryClient(<CharacterList />);
+    renderWithQueryClientAndRouter(<CharacterList />);
 
     await waitFor(() => {
       expect(screen.getByText('Rick Sanchez')).toBeInTheDocument();
@@ -121,7 +126,7 @@ describe('CharacterList', () => {
       })
     );
 
-    renderWithQueryClient(<CharacterList />);
+    renderWithQueryClientAndRouter(<CharacterList />);
 
     await waitFor(() => {
       expect(screen.getByText('Rick Sanchez')).toBeInTheDocument();

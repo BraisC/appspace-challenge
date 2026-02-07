@@ -1,8 +1,13 @@
 import { render, screen, cleanup } from '@testing-library/react';
 import { describe, it, expect, afterEach } from 'vitest';
+import { MemoryRouter } from 'react-router-dom';
 import { CharacterCard } from './CharacterCard';
 
 afterEach(cleanup);
+
+const renderWithRouter = (ui: React.ReactElement) => {
+  return render(<MemoryRouter>{ui}</MemoryRouter>);
+};
 
 describe('CharacterCard', () => {
   const character = {
@@ -13,30 +18,30 @@ describe('CharacterCard', () => {
   };
 
   it('renders character name', () => {
-    render(<CharacterCard character={character} />);
+    renderWithRouter(<CharacterCard character={character} />);
     expect(screen.getByText('Rick Sanchez')).toBeInTheDocument();
   });
 
   it('renders character species', () => {
-    render(<CharacterCard character={character} />);
+    renderWithRouter(<CharacterCard character={character} />);
     expect(screen.getByText('Human')).toBeInTheDocument();
   });
 
   it('renders character image with correct src and alt', () => {
-    render(<CharacterCard character={character} />);
+    renderWithRouter(<CharacterCard character={character} />);
     const image = screen.getByRole('img');
     expect(image).toHaveAttribute('src', 'https://example.com/rick.png');
     expect(image).toHaveAttribute('alt', 'Rick Sanchez');
   });
 
   it('handles null name correctly', () => {
-    render(<CharacterCard character={{ ...character, name: null }} />);
+    renderWithRouter(<CharacterCard character={{ ...character, name: null }} />);
     const image = screen.getByRole('presentation');
     expect(image).toHaveAttribute('alt', '');
   });
 
   it('uses placeholder when image is null', () => {
-    render(<CharacterCard character={{ ...character, image: null }} />);
+    renderWithRouter(<CharacterCard character={{ ...character, image: null }} />);
     const image = screen.getByRole('img');
     expect(image).toHaveAttribute('src', '/character-placeholder.jpg');
   });
