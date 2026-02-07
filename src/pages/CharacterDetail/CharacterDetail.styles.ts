@@ -87,3 +87,22 @@ export const EpisodeTitle = styled.h2`
   font-size: 1.2rem;
   color: #333;
 `;
+
+export const EpisodeList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 300px;
+  overflow-y: auto;
+`;
+
+export const EpisodeItem = styled.li`
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f0f0f0;
+  color: #666;
+  font-size: 0.9rem;
+
+  &:last-child {
+    border-bottom: none;
+  }
+`;

@@ -11,6 +11,8 @@ import {
   Detail,
   EpisodeSection,
   EpisodeTitle,
+  EpisodeList,
+  EpisodeItem,
 } from './CharacterDetail.styles';
 import { Error, Loading } from '@/styles/shared.styles';
 
@@ -51,13 +53,13 @@ export const CharacterDetail = () => {
         </Header>
         <EpisodeSection>
           <EpisodeTitle>Episodes</EpisodeTitle>
-          <ul>
+          <EpisodeList>
             {character?.episode.map((ep) => (
-              <li key={ep?.id}>
+              <EpisodeItem key={ep?.id}>
                 {ep?.episode} - {ep?.name}
-              </li>
+              </EpisodeItem>
             ))}
-          </ul>
+          </EpisodeList>
         </EpisodeSection>
       </Card>
     </>
