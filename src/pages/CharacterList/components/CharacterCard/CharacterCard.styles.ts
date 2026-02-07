@@ -1,4 +1,10 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+
+export const CardLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+`;
 
 export const Card = styled.div`
   background: #fff;
