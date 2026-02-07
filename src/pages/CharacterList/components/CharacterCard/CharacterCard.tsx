@@ -7,7 +7,7 @@ export const CharacterCard = ({ character }: { character: CharacterCardProps }) 
   return (
     <Card>
       <ImageWrapper>
-        <Image src={character.image ?? ''} alt={character.name ?? ''} />
+        <Image src={character.image ?? '/character-placeholder.jpg'} alt={character.name ?? ''} />
       </ImageWrapper>
       <Content>
         <Name>{character.name}</Name>
