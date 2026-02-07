@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useGetCharacter } from '@/hooks/useCharacters';
 
 export const CharacterDetail = () => {
@@ -12,7 +12,19 @@ export const CharacterDetail = () => {
 
   return (
     <div>
+      <Link to="/">Go back</Link>
       <h1>{character?.name}</h1>
+      <img src={character?.image ?? ''} alt={character?.name ?? ''} />
+      <p>{character?.status}</p>
+      <p>{character?.species}</p>
+      <p>{character?.gender}</p>
+      <p>{character?.origin?.name}</p>
+      <p>{character?.location?.name}</p>
+      <ul>
+        {character?.episode.map((ep) => (
+          <li key={ep?.id}>{ep?.episode + ' - ' + ep?.name}</li>
+        ))}
+      </ul>
     </div>
   );
 };
