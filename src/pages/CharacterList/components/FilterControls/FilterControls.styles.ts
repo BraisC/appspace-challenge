@@ -7,7 +7,7 @@ export const Container = styled.div`
 
 export const Input = styled.input`
   padding: 0.5rem 1rem;
-  border: 1px solid #ccc;
+  border: 1px solid var(--color-disabled);
   border-radius: 4px;
   font-family: inherit;
   font-size: 0.9rem;
@@ -15,8 +15,8 @@ export const Input = styled.input`
 
   &:focus {
     outline: none;
-    border-color: #97ce4c;
-    box-shadow: 0 0 0 2px rgba(0, 176, 200, 0.2);
+    border-color: var(--color-lime);
+    box-shadow: 0 0 0 2px var(--color-lime-light);
   }
 
   &::placeholder {

@@ -21,8 +21,8 @@ export const Card = styled.div`
 
   &:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(151, 206, 76, 0.4);
-    border-color: #97ce4c;
+    box-shadow: 0 8px 24px var(--color-lime-glow);
+    border-color: var(--color-lime);
   }
 
   @media (max-width: 900px) {
@@ -56,7 +56,7 @@ export const Content = styled.div`
 export const Name = styled.h3`
   margin: 0 0 0.5rem;
   font-size: 1.1rem;
-  color: #333;
+  color: var(--color-text);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -69,7 +69,7 @@ export const Name = styled.h3`
 export const Species = styled.p`
   margin: 0;
   font-size: 0.9rem;
-  color: #666;
+  color: var(--color-text-muted);
 
   @media (max-width: 600px) {
     font-size: 0.8rem;
