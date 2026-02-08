@@ -4,17 +4,19 @@ import styled from 'styled-components';
 export const BackLink = styled(Link)`
   display: inline-block;
   margin-bottom: 1.5rem;
-  color: #666;
+  color: #00b0c8;
   text-decoration: none;
+  transition: color 0.2s;
 
   &:hover {
-    color: #333;
+    color: #97ce4c;
   }
 `;
 
 export const Card = styled.div`
   border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  border: 2px solid #97ce4c;
+  box-shadow: 0 4px 20px rgba(151, 206, 76, 0.2);
   overflow: hidden;
 `;
 
@@ -63,9 +65,12 @@ export const Status = styled.span<{ $status?: string }>`
   font-size: 0.85rem;
   margin-bottom: 1rem;
   background: ${({ $status }) =>
-    $status === 'Alive' ? '#c3e6cb' : $status === 'Dead' ? '#f5c6cb' : '#e2e3e5'};
+    $status === 'Alive' ? 'rgba(151, 206, 76, 0.2)' : $status === 'Dead' ? '#f5c6cb' : '#e2e3e5'};
   color: ${({ $status }) =>
-    $status === 'Alive' ? '#155724' : $status === 'Dead' ? '#721c24' : '#383d41'};
+    $status === 'Alive' ? '#5a8a2e' : $status === 'Dead' ? '#721c24' : '#383d41'};
+  border: 1px solid
+    ${({ $status }) =>
+      $status === 'Alive' ? '#97ce4c' : $status === 'Dead' ? '#f5c6cb' : '#e2e3e5'};
 `;
 
 export const Detail = styled.p`
@@ -98,9 +103,15 @@ export const EpisodeList = styled.ul`
 
 export const EpisodeItem = styled.li`
   padding: 0.5rem 0;
+  border-radius: 4px;
   border-bottom: 1px solid #f0f0f0;
   color: #666;
   font-size: 0.9rem;
+  transition: background 0.2s;
+
+  &:hover {
+    background: rgba(151, 206, 76, 0.1);
+  }
 
   &:last-child {
     border-bottom: none;
