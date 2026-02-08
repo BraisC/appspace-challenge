@@ -64,7 +64,7 @@ src/
 
 ### State Management
 
-I used Tanstack Query as for this kind of project we don't need to keep client-side state, so something like Redux or even using the Context API would be overengineering and too much boilerplate for a couple of simple requests and datasets that are only being used in two pages.
+I used TanStack Query because for this kind of project we don't need to keep client-side state, so something like Redux or even using the Context API would be overengineering and too much boilerplate for a couple of simple requests and datasets that are only being used in two pages.
 
 ### Styling Approach
 
@@ -90,14 +90,13 @@ For a more complex project with more pages and queries I would use something lik
 
 ## Potential Improvements
 
-- [ ] Implement skeleton loaders instead of using a "Loading..." text
-- [ ] Add empty states when the filtering returns an empty list
-- [ ] Add error boundaries for better error handling instead of just showing "Error loading"
-- [ ] Add dark mode support (I am a fan of dark mode)
-- [ ] Improve accessibility (keyboard navigation, ARIA labels)
-- [ ] Add E2E tests with Playwright
-- [ ] Add pagination to the episode list in CharacterDetail instead of an scrollable list, or even show images for them
-- [ ] Pre-fetch character details on card hover for faster navigation
+- Implement skeleton loaders instead of using a "Loading..." text
+- Add error boundaries for better error handling instead of just showing "Error loading"
+- Add dark mode support (I am a fan of dark mode)
+- Improve accessibility (keyboard navigation, ARIA labels)
+- Add E2E tests with Playwright
+- Add pagination or a carousel to the episode list in CharacterDetail instead of a scrollable list, and show images for them
+- Pre-fetch character details on card hover for faster navigation (for this project I think it may be unnecessary though)
 
 ## Live Demo
 [Link to demo in Netlify](https://appspace-challenge.netlify.app/)
