@@ -100,6 +100,9 @@ For a more complex project with more pages and queries I would use something lik
 - Add pagination or a carousel to the episode list in CharacterDetail instead of a scrollable list, and show images for them
 - Pre-fetch character details on card hover for faster navigation (for this project I think it may be unnecessary though)
 
+## Notes
+Regarding the commit messages, I have to say that sometimes I took into account that this was a challenge for a company when writing them, so maybe they look too obvious or verbose, but I wanted everything to look clear.
+
 ## Live Demo
 [Link to demo in Netlify](https://appspace-challenge.netlify.app/)
 
