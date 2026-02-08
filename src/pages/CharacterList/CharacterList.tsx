@@ -8,7 +8,8 @@ import { SortControls } from './components/SortControls';
 import type { SortOption } from './components/SortControls';
 import { FilterControls } from './components/FilterControls';
 import type { FilterValues } from './components/FilterControls';
-import { Empty, Error, Loading } from '@/styles/shared.styles';
+import { Empty, Error } from '@/styles/shared.styles';
+import { Loader } from '@/components/Loader';
 
 export const CharacterList = () => {
   const [page, setPage] = useState(1);
@@ -40,7 +41,7 @@ export const CharacterList = () => {
   }, [validData, sortBy]);
 
   const renderContent = () => {
-    if (isLoading) return <Loading>Loading...</Loading>;
+    if (isLoading) return <Loader />;
     if (error) return <Error>Error loading</Error>;
     if (!sortedData?.length) return <Empty>No characters found</Empty>;
 

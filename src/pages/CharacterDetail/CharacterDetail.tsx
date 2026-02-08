@@ -14,13 +14,14 @@ import {
   EpisodeList,
   EpisodeItem,
 } from './CharacterDetail.styles';
-import { Empty, Error, Loading } from '@/styles/shared.styles';
+import { Empty, Error } from '@/styles/shared.styles';
+import { Loader } from '@/components/Loader';
 
 export const CharacterDetail = () => {
   const { id } = useParams<{ id: string }>();
   const { data, isLoading, error } = useGetCharacter({ id: id! });
 
-  if (isLoading) return <Loading>Loading...</Loading>;
+  if (isLoading) return <Loader />;
   if (error) return <Error>Error loading character</Error>;
 
   const character = data?.character;
