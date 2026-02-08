@@ -52,9 +52,10 @@ npm test -- --run  # Single run
 src/
 ├── hooks/          # Custom hooks
 ├── layout/         # Layout component
-├── lib/               # GraphQL client setup
+├── lib/            # GraphQL client setup
 ├── pages/          # Every folder matches a route
 │   ├── CharacterList/    # Main list view
+│   │   └──components        # Subcomponents used only by this view
 │   └── CharacterDetail/  # Individual character view
 ├── styles/         # Shared styled components
 └── types/          # Generated GraphQL types
