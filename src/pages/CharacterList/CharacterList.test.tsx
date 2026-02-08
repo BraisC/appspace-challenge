@@ -52,7 +52,7 @@ describe('CharacterList', () => {
   it('shows loading state then renders characters', async () => {
     renderWithQueryClientAndRouter(<CharacterList />);
 
-    expect(screen.getByText('Loading...')).toBeInTheDocument();
+    expect(screen.getByAltText('Loading')).toBeInTheDocument();
 
     await waitFor(() => {
       expect(screen.getByText('Rick Sanchez')).toBeInTheDocument();

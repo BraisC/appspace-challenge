@@ -63,7 +63,7 @@ const RenderWithQueryClientAndRouter = (id: string) => {
 describe('CharacterDetail', () => {
   it('shows loading state', () => {
     RenderWithQueryClientAndRouter('1');
-    expect(screen.getByText('Loading...')).toBeInTheDocument();
+    expect(screen.getByAltText('Loading')).toBeInTheDocument();
   });
 
   it('shows error state when API fails', async () => {
