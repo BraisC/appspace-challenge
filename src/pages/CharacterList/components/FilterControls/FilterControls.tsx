@@ -15,12 +15,14 @@ export const FilterControls = ({ values, onChange }: FilterControlsProps) => (
     <Input
       type="text"
       placeholder="Filter by name..."
+      aria-label="Filter by name"
       value={values.name}
       onChange={(e) => onChange({ ...values, name: e.target.value })}
     />
     <Input
       type="text"
       placeholder="Filter by species..."
+      aria-label="Filter by species"
       value={values.species}
       onChange={(e) => onChange({ ...values, species: e.target.value })}
     />

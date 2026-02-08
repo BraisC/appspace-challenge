@@ -6,7 +6,7 @@ export const Container = styled.div`
   gap: 0.5rem;
 `;
 
-export const Label = styled.span`
+export const Label = styled.label`
   color: #666;
   font-size: 0.9rem;
 `;

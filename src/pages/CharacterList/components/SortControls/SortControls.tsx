@@ -9,8 +9,8 @@ type SortControlsProps = {
 
 export const SortControls = ({ value, onChange }: SortControlsProps) => (
   <Container>
-    <Label>Sort by:</Label>
-    <Select value={value} onChange={(e) => onChange(e.target.value as SortOption)}>
+    <Label htmlFor="sort-select">Sort by:</Label>
+    <Select id="sort-select" value={value} onChange={(e) => onChange(e.target.value as SortOption)}>
       <option value="none">Default</option>
       <option value="name">Name</option>
       <option value="species">Species</option>
