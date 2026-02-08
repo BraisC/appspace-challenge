@@ -92,7 +92,7 @@ For a more complex project with more pages and queries I would use something lik
 
 ## Potential Improvements
 
-- Implement skeleton loaders instead of using a "Loading..." text
+- Implement skeleton loaders instead of using a spinner image
 - Add error boundaries for better error handling (for now I think it would also be overengineering as TanStack manages API errors and everything else is controlled)
 - Add dark mode support (I am a fan of dark mode)
 - Improve accessibility (keyboard navigation, aria-live when finishing loading...)
@@ -108,7 +108,16 @@ Regarding the commit messages, I have to say that sometimes I took into account 
 
 ## Additional Questions
 1. **What are Custom Hooks in React? Propose a practical example where you would create one and explain why it would be useful (skip this if React is not your main known framework).**
+Custom Hooks are a way of extracting logic into hooks that are not the ones that already come with React, by convention their names have to start with `use` and they can only be called inside React components or other hooks. 
+In this project you can find 3 examples, but the best for using as an example here is `useDebounce`, I created it to extract the debounce logic from the component, keeping it cleaner, making it reusable by any other components that may need to debounce a search input, and also making it easier to test it individually, although I didn't do that for this project, I still wanted to keep it isolated.
 2. **What advantages does using TypeScript offer in a Frontend project? What challenges might arise when integrating it into an existing project?**
+The advantages of Typescript are that errors can be caught at compile time or during coding with the correct linting, it helps a lot with IDE suggestions and autocomplete, it is self-documenting as you know what types the components or functions expect or what properties an object should have.
+The challenges are that migrating gradually is tricky, one common approach is to use `any` everywhere and tighten types over time. Also, there can be some third-party libraries without types and it needs to be configured at project level and at the build pipeline.
 3. **How would you approach implementing testing in a Frontend application? What types of tests do you consider essential, and why?**
+For testing, I would write mostly unit and integration tests. Unit tests for simple components, methods or hooks, so we can isolate and individually test their behaviour. Integration tests for pages or groups of components that usually go together and interact, and E2E tests for complete user flows.
+For me, the essentials would be testing business logic with unit tests or integration tests and testing edge cases and different states. But we have to be careful with how simple the thing we are testing is, because sometimes people end up testing things that are not ours, like React rendering or HTML elements.
+The usual approach is to have many unit tests, some integration tests and a few E2E tests.
 4. **You are assigned a project with a team distributed across different time zones and cultures. What strategies would you use to ensure effective communication and an efficient workflow?**
+I think the most important thing is keeping most communication asynchronous and making information complete and easy to find. Thorough documentation and good communication tools are key, in tools like Jira, be as explicit as possible. It's better to over-communicate than to miss something and have to wait 8 hours for an answer. When sync meetings are necessary, schedule them during overlapping hours. Also, be patient if other people are not available.
 5. **A team member suggests a technical solution that you consider inefficient or incorrect. How would you handle this situation to avoid tension while ensuring that the best solution is adopted?**
+First, I would ask them to explain their solution and try to understand their reasoning, I can also be wrong. If I still disagree, understanding their perspective helps me explain why a different approach might work better. I'd look for documentation or examples to support either solution. Sometimes it's better to let them try it, they might discover the issue themselves, or I might learn why their approach was right. If both solutions are viable, we can do quick spikes to compare. This keeps disagreements productive and avoids escalation.
