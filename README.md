@@ -73,6 +73,7 @@ I used TanStack Query because for this kind of project we don't need to keep cli
 ### Styling Approach
 
 I used styled components and kept the scope at component level, so each component has its own `.styles.ts` file with the associated styles just for it. I find this approach easy to understand and all files related to a component are kept together.
+Also created a `GlobalStyles` object for commonly used colors, using CSS variables as they are cleaner and less verbose than using a styled-components `ThemeProvider`, at a cost of losing Typescript autocomplete.
 
 ### Testing Strategy
 
