@@ -36,14 +36,14 @@ npm test -- --run  # Single run
 
 ## Tech Stack
 
-- **React 19 with TypeScript**: This is an obvious choice for this challenge
+- **React 19 with TypeScript**: This is an obvious choice for this challenge.
 - **Vite** - Build tool: Current best build tool for React Projects
-- **TanStack Query** - Data fetching: Also current standard, it comes with automatic cache, I could have used Apollo but wanted to try Tanstack Query with GraphQL as I only used it with REST.
+- **TanStack Query** - Data fetching: Also current standard, it comes with automatic cache, I could have used Apollo but wanted to try TanStack Query with GraphQL as I only used it with REST.
 - **GraphQL** - API: It is what I have been using for the last 5 years and also what you use at Appspace so I think it made sense to showcase that I can work with it, maybe a bit overkill for this project to be honest.
-- **Styled Components** - Styling: Same case as GraphQL, it is what I have more experience with and also what you use at Appspace according to the job posting. It is losing some traction currently in favor of Tailwind and just plain CSS modules because it doesn't work well with SSR and it adds some weight to the bundle and the build steps, but for this project is more than ok.
-- **React Router** - Routing: I could have used Tanstack Router as I already used Tanstack Query, but I feel more comfortable with this one and it is still the standard.
-- **Vitest** - Testing: For a project created with Vite it makes more sense than using Jest, still the syntax is 99% the same while being more performant and needs less configuration. 
-- **React Testing Library** - Component testing: Pretty much the standard to test component rendering and behaviour, it also adds some useful matches like `toBeInTheDocument` or `toHaveAttribute`
+- **Styled Components** - Styling: Same case as GraphQL, it is what I have more experience with and also what you use at Appspace according to the job posting. It is losing some traction currently in favor of Tailwind and just plain CSS modules because it doesn't work well with SSR and it adds some weight to the bundle and the build steps, but for this project it's more than ok.
+- **React Router** - Routing: I could have used TanStack Router as I already used TanStack Query, but I feel more comfortable with this one and it is still the standard.
+- **Vitest** - Testing: For a project created with Vite it makes more sense than using Jest, still the syntax is 99% the same while being more performant and needing less configuration. 
+- **React Testing Library** - Component testing: Pretty much the standard to test component rendering and behaviour, it also adds some useful matchers like `toBeInTheDocument` or `toHaveAttribute`
 - **MSW** - API mocking for tests: I decided to mock the API instead of mocking the hooks because I wanted to test that the hooks worked, if not I would be ignoring my implementation.
 
 ## Project Structure
@@ -79,12 +79,12 @@ I also wrote some unit tests for simple components like `CharacterCard` or `Sort
 ### GraphQL Code Generation
 
 I used `@graphql-codegen` to generate the types based on the GraphQL schema and the queries described in `useCharacters.ts`.
-At first I tried to have the queries in its own `.graphql` file but I ended up having duplication because I needed more dependencies to create the TypedDocumentNodes and there were a couple of bugs that needed some ugly workarounds, so I kept it simpler.
+At first I tried to have the queries in their own `.graphql` file but I ended up having duplication because I needed more dependencies to create the TypedDocumentNodes and there were a couple of bugs that needed some ugly workarounds, so I kept it simpler.
 For a more complex project with more pages and queries I would use something like `@graphql-typed-document-node` or `@graphql-codegen/typed-document-node`
 
 ### API Limitations & Workarounds
 
-- **Sorting**: The API doesn't support server-side sorting, so sorting is done client-side per page, no way of ordering the entire dataset and keep the order through all pages.
+- **Sorting**: The API doesn't support server-side sorting, so sorting is done client-side per page, no way of ordering the entire dataset and keeping the order through all pages.
 - **Filtering**: There is no way to fetch all possible species to create a selector instead of an input, if you don't know what species are available maybe you don't know what to search for.
 
 
