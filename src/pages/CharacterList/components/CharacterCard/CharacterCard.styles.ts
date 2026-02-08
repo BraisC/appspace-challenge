@@ -11,15 +11,18 @@ export const Card = styled.div`
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  border: 2px solid transparent;
   cursor: pointer;
   transition:
     transform 0.2s,
-    box-shadow 0.2s;
+    box-shadow 0.2s,
+    border-color 0.2s;
   width: 16rem;
 
   &:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 24px rgba(151, 206, 76, 0.4);
+    border-color: #97ce4c;
   }
 
   @media (max-width: 900px) {

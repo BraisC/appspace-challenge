@@ -9,7 +9,7 @@ export const Container = styled.div`
 
 export const PageButton = styled.button<{ disabled?: boolean }>`
   padding: 0.5rem 1rem;
-  border: none;
+  border: ${({ disabled }) => (disabled ? '2px solid #ccc' : '2px solid #97ce4c')};
   border-radius: 4px;
   background: ${({ disabled }) => (disabled ? '#ccc' : '#00b0c8')};
   color: ${({ disabled }) => (disabled ? '#666' : '#333')};

@@ -15,7 +15,7 @@ export const Input = styled.input`
 
   &:focus {
     outline: none;
-    border-color: #00b0c8;
+    border-color: #97ce4c;
     box-shadow: 0 0 0 2px rgba(0, 176, 200, 0.2);
   }
 
