@@ -11,15 +11,15 @@ export const PageButton = styled.button<{ disabled?: boolean }>`
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 4px;
-  background: ${({ disabled }) => (disabled ? '#ccc' : '#333')};
-  color: white;
+  background: ${({ disabled }) => (disabled ? '#ccc' : '#00b0c8')};
+  color: ${({ disabled }) => (disabled ? '#666' : '#333')};
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
   transition: background 0.2s;
   font-family: inherit;
   min-width: 6rem;
 
   &:hover:not(:disabled) {
-    background: #555;
+    background: #97ce4c;
   }
 `;
 
