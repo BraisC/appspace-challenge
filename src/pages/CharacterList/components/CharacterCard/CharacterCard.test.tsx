@@ -1,12 +1,18 @@
 import { render, screen, cleanup } from '@testing-library/react';
 import { describe, it, expect, afterEach } from 'vitest';
 import { MemoryRouter } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { CharacterCard } from './CharacterCard';
 
 afterEach(cleanup);
 
-const renderWithRouter = (ui: React.ReactElement) => {
-  return render(<MemoryRouter>{ui}</MemoryRouter>);
+const renderWithQueryClient = (ui: React.ReactElement) => {
+  const queryClient = new QueryClient();
+  return render(
+    <QueryClientProvider client={queryClient}>
+      <MemoryRouter>{ui}</MemoryRouter>
+    </QueryClientProvider>
+  );
 };
 
 describe('CharacterCard', () => {
@@ -18,30 +24,30 @@ describe('CharacterCard', () => {
   };
 
   it('renders character name', () => {
-    renderWithRouter(<CharacterCard character={character} />);
+    renderWithQueryClient(<CharacterCard character={character} />);
     expect(screen.getByText('Rick Sanchez')).toBeInTheDocument();
   });
 
   it('renders character species', () => {
-    renderWithRouter(<CharacterCard character={character} />);
+    renderWithQueryClient(<CharacterCard character={character} />);
     expect(screen.getByText('Human')).toBeInTheDocument();
   });
 
   it('renders character image with correct src and alt', () => {
-    renderWithRouter(<CharacterCard character={character} />);
+    renderWithQueryClient(<CharacterCard character={character} />);
     const image = screen.getByRole('img');
     expect(image).toHaveAttribute('src', 'https://example.com/rick.png');
     expect(image).toHaveAttribute('alt', 'Rick Sanchez');
   });
 
   it('handles null name correctly', () => {
-    renderWithRouter(<CharacterCard character={{ ...character, name: null }} />);
+    renderWithQueryClient(<CharacterCard character={{ ...character, name: null }} />);
     const image = screen.getByRole('presentation');
     expect(image).toHaveAttribute('alt', '');
   });
 
   it('uses placeholder when image is null', () => {
-    renderWithRouter(<CharacterCard character={{ ...character, image: null }} />);
+    renderWithQueryClient(<CharacterCard character={{ ...character, image: null }} />);
     const image = screen.getByRole('img');
     expect(image).toHaveAttribute('src', '/character-placeholder.jpg');
   });

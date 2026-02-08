@@ -40,7 +40,7 @@ npm test -- --run  # Single run
 ## Tech Stack
 
 - **React 19 with TypeScript**: This is an obvious choice for this challenge.
-- **Vite** - Build tool: Current best build tool for React Projects
+- **Vite** - Build tool: Current best build tool for React projects
 - **TanStack Query** - Data fetching: Also current standard, it comes with automatic cache, I could have used Apollo but wanted to try TanStack Query with GraphQL as I only used it with REST.
 - **GraphQL** - API: It is what I have been using for the last 5 years and also what you use at Appspace so I think it made sense to showcase that I can work with it, maybe a bit overkill for this project to be honest.
 - **Styled Components** - Styling: Same case as GraphQL, it is what I have more experience with and also what you use at Appspace according to the job posting. It is losing some traction currently in favor of Tailwind and just plain CSS modules because it doesn't work well with SSR and it adds some weight to the bundle and the build steps, but for this project it's more than ok.
@@ -58,7 +58,7 @@ src/
 ├── lib/            # GraphQL client setup
 ├── pages/          # Every folder matches a route
 │   ├── CharacterList/    # Main list view
-│   │   └──components        # Subcomponents used only by this view
+│   │   └── components        # Subcomponents used only by this view
 │   └── CharacterDetail/  # Individual character view
 ├── styles/         # Shared styled components
 └── types/          # Generated GraphQL types
@@ -101,10 +101,12 @@ For a more complex project with more pages and queries I would use something lik
 - Improve accessibility (keyboard navigation, aria-live when finishing loading...)
 - Add E2E tests with Playwright (for now the unit and integrations tests already cover most of what E2E tests would)
 - Add pagination or a carousel to the episode list in CharacterDetail instead of a scrollable list, and show images for them
-- Pre-fetch character details on card hover for faster navigation (for this project I think it may be unnecessary though)
+- Add a delay to the prefetch on `CharacterCard` so it doesn't prefetch when the mouse quickly passes over a card
 
 ## Notes
 Regarding the commit messages, I have to say that sometimes I took into account that this was a challenge for a company when writing them, so maybe they look too obvious or verbose, but I wanted everything to look clear.
+
+I added prefetching on card hover just on desktop, for mobile it could be done with `onTouchStart` or an intersection observer but I think that would be too much for an app like this, implemented it for desktop to showcase a bit more of my experience.
 
 
 ## Additional Questions
