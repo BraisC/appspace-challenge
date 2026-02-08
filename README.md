@@ -86,15 +86,16 @@ For a more complex project with more pages and queries I would use something lik
 
 - **Sorting**: The API doesn't support server-side sorting, so sorting is done client-side per page, no way of ordering the entire dataset and keeping the order through all pages.
 - **Filtering**: There is no way to fetch all possible species to create a selector instead of an input, if you don't know what species are available maybe you don't know what to search for.
+- **Note**: I chose to display characters instead of episodes because, from my perspective, it looks better. Reading the challenge description, I understood that I could pick either of the two, although one of the requirements mentions sorting by title while characters use name. I hope that won’t be an issue.
 
 
 ## Potential Improvements
 
 - Implement skeleton loaders instead of using a "Loading..." text
-- Add error boundaries for better error handling instead of just showing "Error loading"
+- Add error boundaries for better error handling (for now I think it would also be overengineering as TanStack manages API errors and everything else is controlled)
 - Add dark mode support (I am a fan of dark mode)
-- Improve accessibility (keyboard navigation, ARIA labels)
-- Add E2E tests with Playwright
+- Improve accessibility (keyboard navigation, aria-live when finishing loading...)
+- Add E2E tests with Playwright (for now the unit and integrations tests already cover most of what E2E tests would)
 - Add pagination or a carousel to the episode list in CharacterDetail instead of a scrollable list, and show images for them
 - Pre-fetch character details on card hover for faster navigation (for this project I think it may be unnecessary though)
 
