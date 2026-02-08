@@ -6,6 +6,9 @@ A React application that displays characters from the Rick and Morty universe us
   <img src="./docs/demo.gif" alt="Demo" />
 </p>
 
+## Live Demo
+[LINK to demo on Netlify](https://appspace-challenge.netlify.app/)
+
 ## Getting Started
 
 ### Prerequisites
@@ -93,7 +96,7 @@ For a more complex project with more pages and queries I would use something lik
 ## Potential Improvements
 
 - Implement skeleton loaders instead of using a spinner image
-- Add error boundaries for better error handling (for now I think it would also be overengineering as TanStack manages API errors and everything else is controlled)
+- Add error boundaries for better error handling (for the current app state I think it would also be overengineering as TanStack manages API errors and everything else is controlled)
 - Add dark mode support (I am a fan of dark mode)
 - Improve accessibility (keyboard navigation, aria-live when finishing loading...)
 - Add E2E tests with Playwright (for now the unit and integrations tests already cover most of what E2E tests would)
@@ -103,8 +106,6 @@ For a more complex project with more pages and queries I would use something lik
 ## Notes
 Regarding the commit messages, I have to say that sometimes I took into account that this was a challenge for a company when writing them, so maybe they look too obvious or verbose, but I wanted everything to look clear.
 
-## Live Demo
-[Link to demo in Netlify](https://appspace-challenge.netlify.app/)
 
 ## Additional Questions
 1. **What are Custom Hooks in React? Propose a practical example where you would create one and explain why it would be useful (skip this if React is not your main known framework).**
