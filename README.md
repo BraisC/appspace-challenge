@@ -53,6 +53,8 @@ npm test -- --run  # Single run
 
 ```
 src/
+├── components/     # Common components
+├── graphql/        # GraphQL queries
 ├── hooks/          # Custom hooks
 ├── layout/         # Layout component
 ├── lib/            # GraphQL client setup
