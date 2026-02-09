@@ -66,6 +66,11 @@ src/
 
 ## Technical Decisions
 
+## Architecture
+
+I organized components based on feature, so all files related to a feature live under the same folder and they are easier to find.
+Common components, hooks or styles live in their own folders.
+
 ### State Management
 
 I used TanStack Query because for this kind of project we don't need to keep client-side state, so something like Redux or even using the Context API would be overengineering and too much boilerplate for a couple of simple requests and datasets that are only being used in two pages.
